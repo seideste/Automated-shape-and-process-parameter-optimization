@@ -1,0 +1,30 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  9
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    object      surfaceFeaturesDict;
+
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+surfaces (
+
+"wall.stl"
+"lid.stl"
+"shaft.stl"
+"stirrer.stl"
+"rotating.stl"
+);
+
+//#includeEtc "caseDicts/surface/surfaceFeaturesDict.cfg"
+
+includedAngle       120;
+
+// ************************************************************************* //

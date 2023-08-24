@@ -1,0 +1,71 @@
+# Dakota Input File
+#
+# A hybrid sampling method is used to check out different results for
+# different design quantities. An optimization is not done here but can
+# be added simply by change the method.
+#
+# The method that is used it the Latin Hypercube Sampling (LHS)
+#-----------------------------------------------------------------------------
+
+environment,
+	error_file 'dakotaError'
+    output_precision 4
+    tabular_graphics_data
+    tabular_graphics_file = 'dakotaData.dat'
+	method_pointer = 'DACE'
+
+method,
+	id_method = 'DACE'
+	model_pointer = 'DACE_M'
+	dace	
+	lhs
+	samples = 100
+	seed = 2492
+	output verbose
+	main_effects
+	quality_metrics
+	
+model,
+	id_model = 'DACE_M'
+	single
+	interface_pointer = 'I1'
+	variables_pointer = 'V1'
+	responses_pointer = 'R1'
+
+variables,
+	id_variables = 'V1'
+    continuous_design = 5
+		descriptors   = 	'H'   	'D'		'a'		'a2'	'n'
+		initial_point =    	0.2    	100    	45		10		31.415927
+		lower_bounds  =   	0.1    	50  	-45		10		5.235988
+		upper_bounds  =  	0.45    170     90		60		52.3598775
+
+
+interface
+	id_interface = 'I1'
+        asynchronous 
+	evaluation_concurrency = 4
+	analysis_concurrency = 1
+	fork
+        analysis_driver = 'dakota_driver.sh'
+        parameters_file = 'params.in'
+	results_file    = 'results.out'
+	work_directory named 'workdir/run'
+	copy_files = '../basecase/*'
+				'dakota_driver.sh'
+				'dakotaParameter.orig'
+				'dakotaParameter'
+	
+	directory_tag
+	directory_save
+	file_save
+	file_tag
+responses
+	id_responses = 'R1'
+    	objective_functions = 1
+	descriptors     = 'result'
+    	no_hessians
+    	no_gradients
+
+	sense 'min'
+#-----------------------------------------------------------------------------

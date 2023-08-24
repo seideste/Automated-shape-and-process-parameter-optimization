@@ -1,0 +1,20 @@
+foamVersion="OpenFOAM-10"
+
+cd ${0%/*} || exit 1
+clear
+
+dakotaInputFile="dakota.in"
+dakotaOutputFile="dakotaLog"
+optimizationLogFile="optimizationLog"
+
+#------------------------------------------------------------------------------
+echo -e "     ++ Input file for dakota: $dakotaInputFile"
+echo -e "     ++ Output file for dakota: $dakotaOutputFile"
+echo -e "     ++ Log file: $optimizationLogFile"
+
+#------------------------------------------------------------------------------
+echo "1" > .optimizationLoop
+dakota -i $dakotaInputFile -o $dakotaOutputFile > $optimizationLogFile &
+wait
+#------------------------------------------------------------------------------
+echo -e "   - DAKOTA analyzes successfully ended\n\n"

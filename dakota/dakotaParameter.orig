@@ -1,0 +1,9 @@
+# This file contains the parameters that can be changed
+# Dakota will change the parameters with brackets and the name
+# corresponds to the variables in the dakotaDict
+
+H = {H}
+D = {D}
+a = {a}
+a2 = {a2}
+n = {n}

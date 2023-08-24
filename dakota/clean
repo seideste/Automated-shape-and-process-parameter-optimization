@@ -1,0 +1,8 @@
+#------------------------------------------------------------------------------
+rm -r dakotaLog optimizationLog result.stl mrf.stl dakota.rst dakotaData.dat power LHS* *.sps *.dat *.log *.alg
+rm dakotaError *.py *.npy  *.stl
+rm .optimizationLoop
+rm .dakotaInput.dak
+rm -r workdir
+rm -rf 0 system constant Log results postProcessing
+#------------------------------------------------------------------------------
